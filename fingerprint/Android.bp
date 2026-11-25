@@ -52,13 +52,7 @@ cc_library_headers {
     export_header_lib_headers: ["libhardware_headers"],
 }
 
-cc_library_static {
-    name: "libudfps_extension.xiaomi",
-    srcs: ["UdfpsExtension.cpp"],
-    include_dirs: [
-        "frameworks/native/services/surfaceflinger/CompositionEngine/include",
-    ],
-    header_libs: [
-        "device_kernel_headers",
-    ],
-}
+// libudfps_extension.xiaomi removed for PenguinOS: it is a system (SurfaceFlinger) library
+// but needs sde_drm.h from device_kernel_headers, which AOSPA only provides for vendor.
+// miatoll has a side-mounted fingerprint sensor (no UDFPS), so it is unused. Restore it
+// (with a system-side kernel headers lib) for a UDFPS device.
